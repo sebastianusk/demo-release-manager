@@ -10,7 +10,7 @@ jobs:
           changed_files=$(git diff --name-only HEAD~ HEAD)
           yaml_files=$(echo "$changed_files" | grep -E '\.ya?ml$')
           echo "YAML_FILES=$yaml_files" >> $GITHUB_ENV  # Store filtered files in environment variable
-      - uses: nrkno/yaml-schema-validator-github-action@v5
+      - uses: nrkno/yaml-schema-validator-github-action
         with:
           schema: schemas/schema.yaml
           target: ${{ env.YAML_FILES }}
