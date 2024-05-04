@@ -5,12 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4 # Fetch the repository
-      - name: Identify changed YAML files
-        run: | # Example Bash script
-          changed_files=$(git diff --name-only HEAD~ HEAD)
-          yaml_files=$(echo "$changed_files" | grep -E '\.ya?ml$')
-          echo "YAML_FILES=$yaml_files" >> $GITHUB_ENV  # Store filtered files in environment variable
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v44
+        with:
+          files: |
+            **.yaml
       - uses: nrkno/yaml-schema-validator-github-action@v4
         with:
           schema: schemas/schema.yaml
-          target: ${{ env.YAML_FILES }}
+          target: ${{ steps.changed-files.outputs.all_changed_files }}
