@@ -13,5 +13,5 @@ jobs:
             **.yaml
       - uses: nrkno/yaml-schema-validator-github-action@v4
         with:
-          schema: schemas/schema.yaml
+          schema: schema-validator.json
           target: ${{ steps.changed-files.outputs.all_changed_files }}
