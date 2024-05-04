@@ -1,5 +1,5 @@
 name: Validate Schema
-on: [push, pull_request]
+on: [pull_request]
 jobs:
   Run-Validation:
     runs-on: ubuntu-latest
