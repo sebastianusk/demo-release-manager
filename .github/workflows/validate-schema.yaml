@@ -12,4 +12,9 @@ jobs:
           files: |
             **.yaml
       - name: Validate YAML file
-        run: yamllint ${{ steps.changed-files.outputs.all_changed_files }}
+        env:
+          FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          if [[ -v FILES ]]; then
+            yamllint $FILES
+          fi
