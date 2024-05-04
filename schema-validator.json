@@ -2,11 +2,9 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "The name of the deployment",
-      "required": true
+      "description": "The name of the deployment"
     },
     "size": {
-      "required": true,
       "type": "string",
       "description": "The size of the application",
       "enum": ["small", "medium", "large"]
